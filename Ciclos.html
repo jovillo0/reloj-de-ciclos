@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>El Compás de los Ciclos Cósmicos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0a0c14;
+      --card-bg: #13192b;
+      --card-border: #f59e0b44;
+      --gold-primary: #f59e0b;
+      --gold-light: #fef08a;
+      --text-muted: #94a3b8;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0a0c14;
+      color: #f1f5f9;
+      min-height: 100vh;
+      padding: 14px 10px 50px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .gold-gradient {
+      background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #b45309 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .container {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .glass-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .select-field {
+      width: 100%;
+      padding: 12px 8px;
+      border-radius: 10px;
+      background-color: #0d1222;
+      border: 1px solid #334155;
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+      -webkit-appearance: menulist;
+      appearance: menulist;
+    }
+    /* Estructura adaptable a móvil sin cortes */
+    .date-row {
+      display: grid;
+      grid-template-columns: 75px 1fr 95px;
+      gap: 6px;
+    }
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    @media (min-width: 480px) {
+      .week-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (min-width: 768px) {
+      .week-grid { grid-template-columns: repeat(7, 1fr); }
+    }
+    .day-btn {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #1e293b;
+      background: #0f1526;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 110px;
+    }
+    .day-selected {
+      background: #271f0c !important;
+      border-color: var(--gold-primary) !important;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    @media (min-width: 640px) {
+      .meta-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .meta-item {
+      background: #0d1222;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+    .split-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 640px) {
+      .split-2 { grid-template-columns: 1fr 1fr; }
+    }
+    .btn-action {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      background: #f59e0b;
+      color: #080a12;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    .btn-action:active {
+      background: #d97706;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    
+    <header style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+      <div style="width: 72px; height: 72px;">
+        <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
+          <circle cx="50" cy="50" r="46" stroke="#f59e0b" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.6"/>
+          <path d="M47 12 H53 V44 H85 V50 H53 V82 H47 V50 H15 V44 H47 Z" fill="#d97706" stroke="#fef08a" stroke-width="0.8"/>
+          <circle cx="50" cy="47" r="11" fill="#b91c1c"/>
+          <path d="M50 36 C45 36 41 40 43 45 C38 45 36 50 39 54 C38 58 43 61 47 60 C50 63 56 61 58 57 C62 56 63 50 60 46 C62 41 57 37 52 38 Z" fill="#dc2626"/>
+          <circle cx="50" cy="47" r="4" fill="#facc15"/>
+        </svg>
+      </div>
+
+      <div class="badge">
+        <span>☉</span> Ley del Ciclo Simple & Ritmos Cósmicos
+      </div>
+      <h1 class="font-cinzel gold-gradient" style="font-size: clamp(22px, 5vw, 36px); font-weight: 800; line-height: 1.1;">
+        El Reloj de los Ciclos
+      </h1>
+      <p style="font-size: 12px; color: var(--text-muted); max-width: 440px;">
+        Determina tu Domingo solar natal, orienta tus tareas semanales y consulta la energía de cualquier jornada.
+      </p>
+    </header>
+
+    <!-- Controles de Fecha -->
+    <section class="glass-card" style="display: flex; flex-direction: column; gap: 12px;">
+      <div>
+        <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: #cbd5e1; display: block; margin-bottom: 4px;">
+          Tu Fecha de Nacimiento
+        </span>
+        <div class="date-row">
+          <select id="birthDay" class="select-field" onchange="ejecutarAutoCalculo()">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+          </select>
+          <select id="birthMonth" class="select-field" onchange="ejecutarAutoCalculo()">
+            <option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option><option value="3">Abril</option><option value="4">Mayo</option><option value="5">Junio</option><option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option><option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option>
+          </select>
+          <select id="birthYear" class="select-field" onchange="ejecutarAutoCalculo()">
+            <option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2005">2005</option><option value="2000">2000</option><option value="1995">1995</option><option value="1990" selected>1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1960">1960</option><option value="1955">1955</option><option value="1950">1950</option><option value="1945">1945</option><option value="1940">1940</option><option value="1935">1935</option><option value="1930">1930</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: #cbd5e1; display: block; margin-bottom: 4px;">
+          Fecha a Consultar
+        </span>
+        <div class="date-row">
+          <select id="targetDay" class="select-field" onchange="ejecutarAutoCalculo()">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+          </select>
+          <select id="targetMonth" class="select-field" onchange="ejecutarAutoCalculo()">
+            <option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option><option value="3">Abril</option><option value="4">Mayo</option><option value="5">Junio</option><option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option><option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option>
+          </select>
+          <select id="targetYear" class="select-field" onchange="ejecutarAutoCalculo()">
+            <option value="2027">2027</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="btnCalcularRitmos" class="btn-action font-cinzel">
+          ✦ ACTUALIZAR RITMOS ✦
+        </button>
+      </div>
+    </section>
+
+    <!-- Resultados -->
+    <div id="results" style="display: flex; flex-direction: column; gap: 14px;">
+      
+      <section class="glass-card" style="border-color: rgba(245, 158, 11, 0.45);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div id="planetIconBox" style="width: 44px; height: 44px; border-radius: 10px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); display: flex; align-items: center; justify-content: center; color: #f59e0b;"></div>
+            <div>
+              <span id="targetDateBadge" style="font-size: 10px; text-transform: uppercase; font-weight: 700; color: #f59e0b; display: block;"></span>
+              <h2 id="todayPhaseTitle" class="font-cinzel" style="font-size: clamp(15px, 3.5vw, 19px); color: #ffffff;">-</h2>
+              <span id="targetPlanetName" style="font-size: 11px; color: var(--text-muted);">-</span>
+            </div>
+          </div>
+          <div style="background: #0d1222; padding: 6px 10px; border-radius: 8px; border: 1px solid #1e293b; text-align: right;">
+            <span style="font-size: 9px; color: var(--text-muted); display: block;">Tu Domingo Natal</span>
+            <span id="natalSunday" class="font-cinzel" style="font-size: 13px; font-weight: 700; color: #fef08a;">-</span>
+          </div>
+        </div>
+
+        <div class="meta-grid" style="margin-top: 10px;">
+          <div class="meta-item">
+            <span style="font-size: 9px; text-transform: uppercase; color: var(--text-muted); display: block;">Metal Interior</span>
+            <span id="phaseMetal" style="font-size: 11px; font-weight: 600; color: #fef08a;">-</span>
+          </div>
+          <div class="meta-item">
+            <span style="font-size: 9px; text-transform: uppercase; color: var(--text-muted); display: block;">Piedra Catalizadora</span>
+            <span id="phaseStone" style="font-size: 11px; font-weight: 600; color: #fde68a;">-</span>
+          </div>
+          <div class="meta-item">
+            <span style="font-size: 9px; text-transform: uppercase; color: var(--text-muted); display: block;">Polaridad</span>
+            <span id="phasePolarity" style="font-size: 11px; font-weight: 600; color: #fef08a;">-</span>
+          </div>
+          <div class="meta-item">
+            <span style="font-size: 9px; text-transform: uppercase; color: var(--text-muted); display: block;">Virtud Activa</span>
+            <span id="phaseVirtue" style="font-size: 11px; font-weight: 600; color: #fde68a;">-</span>
+          </div>
+        </div>
+
+        <div class="split-2" style="margin-top: 12px;">
+          <div>
+            <span style="font-size: 10px; font-weight: 700; color: var(--gold-primary); text-transform: uppercase; display: block; margin-bottom: 2px;">✦ Tarea & Actitud Propicia</span>
+            <p id="todayGuidance" style="font-size: 12px; line-height: 1.4; color: #e2e8f0;">-</p>
+          </div>
+          <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; justify-content: center;">
+            <span style="font-size: 9px; font-weight: 700; color: var(--gold-light); text-transform: uppercase; margin-bottom: 2px;">Aforismo Tradicional</span>
+            <blockquote id="todayQuote" style="font-style: italic; font-size: 12px; color: #fef3c7; line-height: 1.3;">"-"</blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- Asesor Inverso de Tareas -->
+      <section class="glass-card">
+        <h3 class="font-cinzel" style="font-size: 14px; color: var(--gold-light); margin-bottom: 4px;">
+          ¿Qué deseas emprender? (Asesor de Tareas)
+        </h3>
+        <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
+          Elige qué necesitas realizar y se indicará el día propicio según tu ciclo personal:
+        </p>
+        <div class="split-2">
+          <select id="actionSelector" class="select-field" onchange="cambioTarea()">
+            <option value="0">Intuir planes y meditación (Creación mental)</option>
+            <option value="1">Planificar al detalle, analizar y organizar</option>
+            <option value="2">Firmar contratos, acuerdos y correspondencia</option>
+            <option value="3">Trabajo físico, obras activas y deportes</option>
+            <option value="4">Consolidar proyectos y evaluar justicia kármica</option>
+            <option value="5">Recoger frutos, cobrar pagos y gozo artístico</option>
+            <option value="6">Descansar, soltar lo caduco y renovar fuerzas</option>
+          </select>
+          <div style="background: #0d1222; border: 1px solid #1e293b; border-radius: 8px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 9px; text-transform: uppercase; color: var(--text-muted); display: block;">Tu Día Recomendado:</span>
+              <span id="recommendedDayName" class="font-cinzel" style="font-size: 13px; font-weight: 700; color: var(--gold-light);">-</span>
+            </div>
+            <span id="recommendedPlanetName" style="font-size: 10px; padding: 3px 6px; border-radius: 999px; background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25);">-</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rueda Semanal -->
+      <section class="glass-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <h3 class="font-cinzel" style="font-size: 14px; color: var(--gold-light);">El Septenario Semanal Personal</h3>
+          <span style="font-size: 10px; color: var(--text-muted);">Toca para inspeccionar</span>
+        </div>
+        <div class="week-grid" id="weekGrid"></div>
+      </section>
+
+      <!-- Temporizador -->
+      <section class="glass-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <h4 class="font-cinzel" style="font-size: 13px; color: #ffffff;">☉ Meditación Solar (7 Minutos)</h4>
+          <p style="font-size: 11px; color: var(--text-muted);">Descansa con ojos cerrados absorbiendo la luz en rostro y brazos.</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span id="timerDisplay" style="font-family: monospace; font-size: 20px; font-weight: 700; color: #f59e0b;">07:00</span>
+          <button id="timerBtn" type="button" onclick="toggleTimer()" style="padding: 6px 14px; border-radius: 6px; border: none; background: #f59e0b; color: #000; font-weight: 700; font-size: 11px; cursor: pointer;">
+            Iniciar
+          </button>
+        </div>
+      </section>
+
+      <!-- Ciclos Anual y Vital -->
+      <div class="split-2">
+        <section class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 4px; margin-bottom: 6px;">
+            <h4 class="font-cinzel" style="font-size: 13px; color: #ffffff;">☉ Ciclo Anual (52 Días)</h4>
+            <span id="annualPeriodBadge" class="badge" style="font-size: 9px;">-</span>
+          </div>
+          <p id="annualPeriodDesc" style="font-size: 11px; color: #cbd5e1; line-height: 1.3;">-</p>
+          <span id="annualDateRange" style="font-size: 10px; color: var(--text-muted); display: block; margin-top: 4px;">-</span>
+        </section>
+
+        <section class="glass-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 4px; margin-bottom: 6px;">
+            <h4 class="font-cinzel" style="font-size: 13px; color: #ffffff;">☿ Septenario Vital (7 Años)</h4>
+            <span id="lifePeriodBadge" class="badge" style="font-size: 9px;">-</span>
+          </div>
+          <p id="lifePeriodDesc" style="font-size: 11px; color: #cbd5e1; line-height: 1.3;">-</p>
+          <span id="lifeAgeRange" style="font-size: 10px; color: var(--text-muted); display: block; margin-top: 4px;">-</span>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    var SVG_ICONS = {
+      sol: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41m14.14-14.14l-1.41 1.41"/></svg>',
+      luna: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>',
+      marte: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="14" r="5"/><path d="M19 5l-5.4 5.4M14 5h5v5"/></svg>',
+      mercurio: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 16v6m-3-3h6M8 5a4 4 0 008 0"/></svg>',
+      jupiter: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 6v6a3 3 0 003 3h7M14 8v12"/></svg>',
+      venus: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="5"/><path d="M12 14v7m-3-4h6"/></svg>',
+      saturno: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5h5v9a3 3 0 003 3h3M4 10h8"/></svg>'
+    };
+
+    var WEEK_PHASES = [
+      {
+        name: "Día Solar (Tu Domingo)",
+        planet: "Sol",
+        iconKey: 'sol',
+        metal: "Oro (Fuerza Espiritual)",
+        stone: "Diamante / Topacio",
+        polarity: "Positiva / Activa Espiritual",
+        virtue: "Amor Universal & Luz Interior",
+        theme: "Germen, Intuición y Fuerza Vital",
+        action: "Recepción de fuerza cósmica. Meditar al menos 7 minutos absorbiendo la luz. Concebir y crear planes en la mente sin forzar la acción material inmediata.",
+        quote: "No trates de transformar lo que ya ha pasado; crea nuevas condiciones con tu mente."
+      },
+      {
+        name: "Día Lunar (Tu Lunes)",
+        planet: "Luna",
+        iconKey: 'luna',
+        metal: "Plata (Mente Subconsciente)",
+        stone: "Perla / Piedra Lunar",
+        polarity: "Pasiva / Receptiva Reflexiva",
+        virtue: "Sosiego & Claridad Lógica",
+        theme: "Análisis Lógico y Planificación",
+        action: "Estructurar y detallar lo intuido. Es el día de la razón analítica: organizar pasos, diseñar métodos y ordenar los proyectos con serenidad.",
+        quote: "El sabio prepara la copa antes de recibir el licor; ordena tu pensamiento y ordenarás tu senda."
+      },
+      {
+        name: "Día Marcial (Tu Martes)",
+        planet: "Marte",
+        iconKey: 'marte',
+        metal: "Hierro (Voluntad y Energía)",
+        stone: "Rubí / Jaspe Rojo",
+        polarity: "Activa / Expresión Dinámica",
+        virtue: "Valor & Verdad Ponderada",
+        theme: "Comunicación, Expresión y Acuerdos",
+        action: "Poner en palabras las ideas: redacción de documentos, contratos, llamadas importantes, conferencias y acuerdos.",
+        quote: "La palabra equilibrada une el plano abstracto con el mundo de la manifestación."
+      },
+      {
+        name: "Día Mercurial (Tu Miércoles)",
+        planet: "Mercurio",
+        iconKey: 'mercurio',
+        metal: "Mercurio / Azogue (Fluidez Vital)",
+        stone: "Ágata / Esmeralda",
+        polarity: "Neutro / Eje de Enlace",
+        virtue: "Destreza & Adaptabilidad",
+        theme: "Materialización Activa y Movimiento",
+        action: "Poner la materia y el cuerpo en acción: trabajo físico, inicio de tareas dinámicas, deportes y realización tangible.",
+        quote: "La Naturaleza puede y debe ser ayudada por el Arte y la acción consciente."
+      },
+      {
+        name: "Día Jupiteriano (Tu Jueves)",
+        planet: "Júpiter",
+        iconKey: 'jupiter',
+        metal: "Estaño (Equilibrio y Dominio)",
+        stone: "Zafiro / Amatista",
+        polarity: "Activa / Compensación Justa",
+        virtue: "Justicia, Moderación y Rectitud",
+        theme: "Prueba, Equilibrio y Cimiento",
+        action: "Día de examen y firmeza interior. Lo que está en sintonía con la Ley florece con fuerza; lo débil vacila. Mantén templanza.",
+        quote: "Aquel que viaja con seguro guía nada teme ante el oleaje ni ante la compensación cósmica."
+      },
+      {
+        name: "Día Venusino (Tu Viernes)",
+        planet: "Venus",
+        iconKey: 'venus',
+        metal: "Cobre (Armonía y Confraternidad)",
+        stone: "Lapislázuli / Turquesa",
+        polarity: "Pasiva / Fecunda y Armónica",
+        virtue: "Caridad Desinteresada & Belleza",
+        theme: "Recogida de Cosecha y Confort",
+        action: "Recoger los frutos del esfuerzo: percibir pagos, disfrutar del arte, la música, la belleza y compartir con espíritu generoso.",
+        quote: "Para recibir hay que compartir; la copa que sirve agua siempre vuelve a llenarse de la Fuente."
+      },
+      {
+        name: "Día Saturnino (Tu Sábado)",
+        planet: "Saturno",
+        iconKey: 'saturno',
+        metal: "Plomo (Transmutación y Límite)",
+        stone: "Ónice / Obsidiana",
+        polarity: "Involutiva / Reposo Sagrado",
+        virtue: "Paciencia & Silencio Interior",
+        theme: "Descanso, Ajuste e Involución",
+        action: "Descanso, reajuste y disolución de lo caduco. Evitar acometer proyectos arriesgados; preparar el espacio para el renacimiento.",
+        quote: "En el sagrado silencio del reposo, el alma recupera sus alas para el nuevo ciclo."
+      }
+    ];
+
+    var DAYS_NAMES = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+
+    var ANNUAL_PERIODS = [
+      { name: "1º Periodo (Días 1 a 52)", desc: "Acopio de vitalidad, meditación y relaciones públicas. Evitar desgastes innecesarios." },
+      { name: "2º Periodo (Días 53 a 104)", desc: "Gran lucidez analítica e intelectual. Afinidad con el agua y ordenación de ideas." },
+      { name: "3º Periodo (Días 105 a 156)", desc: "Fuerza ejecutiva y gestiones legales. Moderar la vehemencia en las relaciones." },
+      { name: "4º Periodo (Días 157 a 208)", desc: "Materialización activa, conferencias, viajes y expansión de proyectos." },
+      { name: "5º Periodo (Días 209 a 260)", desc: "Examen kármico, consolidación y balance de pensamientos y actos." },
+      { name: "6º Periodo (Días 261 a 312)", desc: "Recogida de frutos y gozo del arte, la cultura y compensaciones merecidas." },
+      { name: "7º Periodo (Días 313 a 365)", desc: "Descanso, reajuste y renovación antes del aniversario solar." }
+    ];
+
+    var LIFE_PERIODS = [
+      { range: "0 - 7 años", desc: "Ajuste al plano físico e intuición cósmica infantil." },
+      { range: "7 - 14 años", desc: "Desarrollo del raciocinio y facultades analíticas." },
+      { range: "14 - 21 años", desc: "Consolidación de la personalidad, vocación e ideales superiores." },
+      { range: "21 - 28 años", desc: "Estabilidad material, cimientos familiares y metas profesionales." },
+      { range: "28 - 35 años", desc: "Despertar espiritual y compromiso vital con la misión propia." },
+      { range: "35 - 42 años", desc: "Plenitud de facultades y cosecha de esfuerzos anteriores." },
+      { range: "42 - 49 años", desc: "Reajuste profundo y examen de valores esenciales ('noche oscura')." },
+      { range: "49 - 56 años", desc: "Madurez, regeneración y despliegue de tolerancia y benevolencia." },
+      { range: "56 - 63 años", desc: "Realización plena y orientación hacia la paz interior." },
+      { range: "63 - 70 años", desc: "Sabiduría serena, consejo para otros y calma reflexiva." },
+      { range: "70+ años", desc: "Desprendimiento gradual y sintonización plena con la Unidad." }
+    ];
+
+    function leerFecha(prefix) {
+      var d = parseInt(document.getElementById(prefix + 'Day').value, 10);
+      var m = parseInt(document.getElementById(prefix + 'Month').value, 10);
+      var y = parseInt(document.getElementById(prefix + 'Year').value, 10);
+      // Usar UTC en Safari para evitar Invalid Date por diferencias horarias locales
+      return new Date(Date.UTC(y, m, d));
+    }
+
+    function updateTaskAdvisor(birthDayOfWeek) {
+      var sel = document.getElementById('actionSelector');
+      if (!sel) return;
+      var selectedPhaseIndex = parseInt(sel.value, 10) || 0;
+      var recommendedCivilDayIndex = (birthDayOfWeek + selectedPhaseIndex) % 7;
+      var phaseData = WEEK_PHASES[selectedPhaseIndex];
+
+      document.getElementById('recommendedDayName').textContent = DAYS_NAMES[recommendedCivilDayIndex];
+      document.getElementById('recommendedPlanetName').textContent = phaseData.planet;
+    }
+
+    function cambioTarea() {
+      var bDate = leerFecha('birth');
+      if (bDate) updateTaskAdvisor(bDate.getUTCDay());
+    }
+
+    function procesarCalculo(birthDate, targetDate) {
+      var birthDayOfWeek = birthDate.getUTCDay();
+      var targetDayOfWeek = targetDate.getUTCDay();
+
+      try {
+        localStorage.setItem('user_saved_birth', JSON.stringify({
+          d: birthDate.getUTCDate(),
+          m: birthDate.getUTCMonth(),
+          y: birthDate.getUTCFullYear()
+        }));
+      } catch (e) {}
+
+      document.getElementById('natalSunday').textContent = DAYS_NAMES[birthDayOfWeek];
+
+      var targetPhaseIndex = (targetDayOfWeek - birthDayOfWeek + 7) % 7;
+      var targetPhase = WEEK_PHASES[targetPhaseIndex];
+
+      document.getElementById('targetDateBadge').textContent = "Fase en: " + DAYS_NAMES[targetDayOfWeek];
+      document.getElementById('todayPhaseTitle').textContent = targetPhase.name;
+      document.getElementById('targetPlanetName').textContent = targetPhase.theme + " • Regencia: " + targetPhase.planet;
+      document.getElementById('todayGuidance').textContent = targetPhase.action;
+      document.getElementById('todayQuote').textContent = '"' + targetPhase.quote + '"';
+      document.getElementById('planetIconBox').innerHTML = SVG_ICONS[targetPhase.iconKey];
+
+      document.getElementById('phaseMetal').textContent = targetPhase.metal;
+      document.getElementById('phaseStone').textContent = targetPhase.stone;
+      document.getElementById('phasePolarity').textContent = targetPhase.polarity;
+      document.getElementById('phaseVirtue').textContent = targetPhase.virtue;
+
+      updateTaskAdvisor(birthDayOfWeek);
+
+      var weekGrid = document.getElementById('weekGrid');
+      weekGrid.innerHTML = '';
+
+      for (var i = 0; i < 7; i++) {
+        (function(idx) {
+          var civilDayIndex = (birthDayOfWeek + idx) % 7;
+          var phase = WEEK_PHASES[idx];
+          var isCurrentSelected = (civilDayIndex === targetDayOfWeek);
+
+          var card = document.createElement('button');
+          card.type = 'button';
+          card.className = 'day-btn' + (isCurrentSelected ? ' day-selected' : '');
+
+          card.innerHTML = 
+            '<div style="width: 100%;">' +
+              '<div style="display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; color: #94a3b8; margin-bottom: 2px;">' +
+                '<span>' + DAYS_NAMES[civilDayIndex] + '</span>' +
+                '<span style="color: #f59e0b;">' + phase.planet + '</span>' +
+              '</div>' +
+              '<div style="margin: 4px 0; color: #f59e0b;">' + SVG_ICONS[phase.iconKey] + '</div>' +
+              '<h5 class="font-cinzel" style="font-size: 11px; font-weight: 700; color: #f1f5f9; line-height: 1.2;">' + phase.name + '</h5>' +
+            '</div>' +
+            '<div style="margin-top: 6px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 10px; color: #fef08a;">' +
+              (isCurrentSelected ? '• Seleccionado •' : ('Fase ' + (idx + 1))) +
+            '</div>';
+
+          card.onclick = function() {
+            var diff = (civilDayIndex - targetDayOfWeek);
+            var nuevoTarget = new Date(Date.UTC(targetDate.getUTCFullYear(), targetDate.getUTCMonth(), targetDate.getUTCDate() + diff));
+            
+            document.getElementById('targetDay').value = nuevoTarget.getUTCDate();
+            document.getElementById('targetMonth').value = nuevoTarget.getUTCMonth();
+            document.getElementById('targetYear').value = nuevoTarget.getUTCFullYear();
+
+            procesarCalculo(birthDate, nuevoTarget);
+          };
+
+          weekGrid.appendChild(card);
+        })(i);
+      }
+
+      var targetYear = targetDate.getUTCFullYear();
+      var lastBirthday = new Date(Date.UTC(targetYear, birthDate.getUTCMonth(), birthDate.getUTCDate()));
+      if (targetDate < lastBirthday) {
+        lastBirthday = new Date(Date.UTC(targetYear - 1, birthDate.getUTCMonth(), birthDate.getUTCDate()));
+      }
+      var diffDays = Math.floor((targetDate - lastBirthday) / (1000 * 60 * 60 * 24));
+      var annualIndex = Math.min(Math.floor(diffDays / 52), 6);
+      if (annualIndex < 0) annualIndex = 0;
+      var currentAnnual = ANNUAL_PERIODS[annualIndex];
+
+      document.getElementById('annualPeriodBadge').textContent = "Fase " + (annualIndex + 1) + " de 7";
+      document.getElementById('annualPeriodDesc').textContent = currentAnnual.desc;
+      document.getElementById('annualDateRange').textContent = "Día " + (diffDays + 1) + " del ciclo solar anual (" + currentAnnual.name + ")";
+
+      var age = targetDate.getUTCFullYear() - birthDate.getUTCFullYear();
+      var monthDiff = targetDate.getUTCMonth() - birthDate.getUTCMonth();
+      if (monthDiff < 0 || (monthDiff === 0 && targetDate.getUTCDate() < birthDate.getUTCDate())) {
+        age--;
+      }
+      var lifeIndex = Math.min(Math.floor(Math.max(age, 0) / 7), LIFE_PERIODS.length - 1);
+      var currentLife = LIFE_PERIODS[lifeIndex];
+
+      document.getElementById('lifePeriodBadge').textContent = age + " años";
+      document.getElementById('lifePeriodDesc').textContent = currentLife.desc;
+      document.getElementById('lifeAgeRange').textContent = "Septenario Vital: " + currentLife.range;
+    }
+
+    function ejecutarAutoCalculo() {
+      var bDate = leerFecha('birth');
+      var tDate = leerFecha('target');
+      if (bDate && tDate && !isNaN(bDate.getTime()) && !isNaN(tDate.getTime())) {
+        procesarCalculo(bDate, tDate);
+      }
+    }
+
+    var btnCalc = document.getElementById('btnCalcularRitmos');
+    function dispararCalculo(e) {
+      if (e) e.preventDefault();
+      ejecutarAutoCalculo();
+      var res = document.getElementById('results');
+      if (res) {
+        var topPos = res.getBoundingClientRect().top + window.pageYOffset - 10;
+        window.scrollTo({ top: topPos, behavior: 'smooth' });
+      }
+    }
+    btnCalc.onclick = dispararCalculo;
+    btnCalc.ontouchend = dispararCalculo;
+
+    var timerInterval = null;
+    var secondsLeft = 7 * 60;
+
+    function toggleTimer() {
+      var btn = document.getElementById('timerBtn');
+      var disp = document.getElementById('timerDisplay');
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        btn.textContent = 'Reanudar';
+      } else {
+        btn.textContent = 'Pausar';
+        timerInterval = setInterval(function() {
+          if (secondsLeft <= 0) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            btn.textContent = 'Completado';
+            alert("Periodo de 7 minutos concluido. Que la Paz Profunda more en tu templo.");
+            return;
+          }
+          secondsLeft--;
+          var m = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
+          var s = String(secondsLeft % 60).padStart(2, '0');
+          disp.textContent = m + ':' + s;
+        }, 1000);
+      }
+    }
+
+    (function init() {
+      var hoy = new Date();
+      var tDay = document.getElementById('targetDay');
+      var tMonth = document.getElementById('targetMonth');
+      var tYear = document.getElementById('targetYear');
+
+      if (tDay) tDay.value = hoy.getDate();
+      if (tMonth) tMonth.value = hoy.getMonth();
+      if (tYear) tYear.value = hoy.getFullYear();
+
+      try {
+        var g = localStorage.getItem('user_saved_birth');
+        if (g) {
+          var p = JSON.parse(g);
+          document.getElementById('birthDay').value = p.d;
+          document.getElementById('birthMonth').value = p.m;
+          document.getElementById('birthYear').value = p.y;
+        }
+      } catch (e) {}
+
+      ejecutarAutoCalculo();
+    })();
+  </script>
+</body>
+</html>
