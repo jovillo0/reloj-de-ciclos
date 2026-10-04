@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Metadatos Open Graph para WhatsApp y Redes Sociales -->
-    <meta property="og:title" content="El Reloj de los Ciclos | Ritmos Cósmicos">
-    <meta property="og:description" content="Determina tu Domingo solar natal, orienta tus tareas semanales y consulta la energía de cualquier jornada.">
-    <link rel="icon" type="image/jpg" href="relojdeciclos.jpg">
-    <link rel="apple-touch-icon" href="relojdeciclos.jpg">
-    <meta property="og:image" content="https://jovillo0.github.io/reloj-de-ciclos/relojdeciclos.jpg">
-    <meta property="og:url" content="https://jovillo0.github.io/reloj-de-ciclos/">
-    <meta property="og:type" content="website">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>El Compás de los Ciclos Cósmicos</title>
@@ -36,7 +28,7 @@
       background: #0a0c14;
       color: #f1f5f9;
       min-height: 100vh;
-      padding: 14px 10px 50px 10px;
+      padding: 16px 12px 40px 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -49,16 +41,16 @@
     }
     .container {
       width: 100%;
-      max-width: 800px;
+      max-width: 860px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
     .glass-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      padding: 14px;
+      padding: 16px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
     .badge {
@@ -77,21 +69,20 @@
     }
     .select-field {
       width: 100%;
-      padding: 12px 8px;
+      padding: 12px 10px;
       border-radius: 10px;
       background-color: #0d1222;
       border: 1px solid #334155;
       color: #ffffff;
-      font-size: 14px;
+      font-size: 15px;
       outline: none;
       -webkit-appearance: menulist;
       appearance: menulist;
     }
-    /* Estructura adaptable a móvil sin cortes */
-    .date-row {
+    .grid-3-col {
       display: grid;
-      grid-template-columns: 75px 1fr 95px;
-      gap: 6px;
+      grid-template-columns: 1fr 1.3fr 1.1fr;
+      gap: 8px;
     }
     .week-grid {
       display: grid;
@@ -115,7 +106,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 110px;
+      min-height: 120px;
     }
     .day-selected {
       background: #271f0c !important;
@@ -154,7 +145,7 @@
       font-weight: 800;
       font-size: 15px;
       cursor: pointer;
-      margin-top: 4px;
+      touch-action: manipulation;
     }
     .btn-action:active {
       background: #d97706;
@@ -179,47 +170,35 @@
       <div class="badge">
         <span>☉</span> Ley del Ciclo Simple & Ritmos Cósmicos
       </div>
-      <h1 class="font-cinzel gold-gradient" style="font-size: clamp(22px, 5vw, 36px); font-weight: 800; line-height: 1.1;">
+      <h1 class="font-cinzel gold-gradient" style="font-size: clamp(24px, 5.5vw, 38px); font-weight: 800; line-height: 1.1;">
         El Reloj de los Ciclos
       </h1>
-      <p style="font-size: 12px; color: var(--text-muted); max-width: 440px;">
+      <p style="font-size: 13px; color: var(--text-muted); max-width: 480px;">
         Determina tu Domingo solar natal, orienta tus tareas semanales y consulta la energía de cualquier jornada.
       </p>
     </header>
 
-    <!-- Controles de Fecha -->
-    <section class="glass-card" style="display: flex; flex-direction: column; gap: 12px;">
+    <!-- Controles -->
+    <section class="glass-card" style="display: flex; flex-direction: column; gap: 14px;">
       <div>
-        <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: #cbd5e1; display: block; margin-bottom: 4px;">
+        <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: #cbd5e1; display: block; margin-bottom: 6px;">
           Tu Fecha de Nacimiento
         </span>
-        <div class="date-row">
-          <select id="birthDay" class="select-field" onchange="ejecutarAutoCalculo()">
-            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
-          </select>
-          <select id="birthMonth" class="select-field" onchange="ejecutarAutoCalculo()">
-            <option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option><option value="3">Abril</option><option value="4">Mayo</option><option value="5">Junio</option><option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option><option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option>
-          </select>
-          <select id="birthYear" class="select-field" onchange="ejecutarAutoCalculo()">
-            <option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2005">2005</option><option value="2000">2000</option><option value="1995">1995</option><option value="1990" selected>1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1960">1960</option><option value="1955">1955</option><option value="1950">1950</option><option value="1945">1945</option><option value="1940">1940</option><option value="1935">1935</option><option value="1930">1930</option>
-          </select>
+        <div class="grid-3-col">
+          <select id="birthDay" class="select-field" onchange="ejecutarAutoCalculo()"></select>
+          <select id="birthMonth" class="select-field" onchange="ejecutarAutoCalculo()"></select>
+          <select id="birthYear" class="select-field" onchange="ejecutarAutoCalculo()"></select>
         </div>
       </div>
 
       <div>
-        <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: #cbd5e1; display: block; margin-bottom: 4px;">
+        <span style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: #cbd5e1; display: block; margin-bottom: 6px;">
           Fecha a Consultar
         </span>
-        <div class="date-row">
-          <select id="targetDay" class="select-field" onchange="ejecutarAutoCalculo()">
-            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
-          </select>
-          <select id="targetMonth" class="select-field" onchange="ejecutarAutoCalculo()">
-            <option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option><option value="3">Abril</option><option value="4">Mayo</option><option value="5">Junio</option><option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option><option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option>
-          </select>
-          <select id="targetYear" class="select-field" onchange="ejecutarAutoCalculo()">
-            <option value="2027">2027</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option>
-          </select>
+        <div class="grid-3-col">
+          <select id="targetDay" class="select-field" onchange="ejecutarAutoCalculo()"></select>
+          <select id="targetMonth" class="select-field" onchange="ejecutarAutoCalculo()"></select>
+          <select id="targetYear" class="select-field" onchange="ejecutarAutoCalculo()"></select>
         </div>
       </div>
 
@@ -231,61 +210,61 @@
     </section>
 
     <!-- Resultados -->
-    <div id="results" style="display: flex; flex-direction: column; gap: 14px;">
+    <div id="results" style="display: flex; flex-direction: column; gap: 16px;">
       
       <section class="glass-card" style="border-color: rgba(245, 158, 11, 0.45);">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 10px; flex-wrap: wrap; gap: 8px;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <div id="planetIconBox" style="width: 44px; height: 44px; border-radius: 10px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); display: flex; align-items: center; justify-content: center; color: #f59e0b;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div id="planetIconBox" style="width: 48px; height: 48px; border-radius: 12px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); display: flex; align-items: center; justify-content: center; color: #f59e0b;"></div>
             <div>
-              <span id="targetDateBadge" style="font-size: 10px; text-transform: uppercase; font-weight: 700; color: #f59e0b; display: block;"></span>
-              <h2 id="todayPhaseTitle" class="font-cinzel" style="font-size: clamp(15px, 3.5vw, 19px); color: #ffffff;">-</h2>
-              <span id="targetPlanetName" style="font-size: 11px; color: var(--text-muted);">-</span>
+              <span id="targetDateBadge" style="font-size: 11px; text-transform: uppercase; font-weight: 700; color: #f59e0b; display: block;"></span>
+              <h2 id="todayPhaseTitle" class="font-cinzel" style="font-size: clamp(16px, 4vw, 20px); color: #ffffff;">-</h2>
+              <span id="targetPlanetName" style="font-size: 12px; color: var(--text-muted);">-</span>
             </div>
           </div>
-          <div style="background: #0d1222; padding: 6px 10px; border-radius: 8px; border: 1px solid #1e293b; text-align: right;">
-            <span style="font-size: 9px; color: var(--text-muted); display: block;">Tu Domingo Natal</span>
-            <span id="natalSunday" class="font-cinzel" style="font-size: 13px; font-weight: 700; color: #fef08a;">-</span>
+          <div style="background: #0d1222; padding: 8px 12px; border-radius: 10px; border: 1px solid #1e293b; text-align: right;">
+            <span style="font-size: 10px; color: var(--text-muted); display: block;">Tu Domingo Natal</span>
+            <span id="natalSunday" class="font-cinzel" style="font-size: 14px; font-weight: 700; color: #fef08a;">-</span>
           </div>
         </div>
 
-        <div class="meta-grid" style="margin-top: 10px;">
+        <div class="meta-grid" style="margin-top: 12px;">
           <div class="meta-item">
-            <span style="font-size: 9px; text-transform: uppercase; color: var(--text-muted); display: block;">Metal Interior</span>
-            <span id="phaseMetal" style="font-size: 11px; font-weight: 600; color: #fef08a;">-</span>
+            <span style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); display: block;">Metal Interior</span>
+            <span id="phaseMetal" style="font-size: 12px; font-weight: 600; color: #fef08a;">-</span>
           </div>
           <div class="meta-item">
-            <span style="font-size: 9px; text-transform: uppercase; color: var(--text-muted); display: block;">Piedra Catalizadora</span>
-            <span id="phaseStone" style="font-size: 11px; font-weight: 600; color: #fde68a;">-</span>
+            <span style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); display: block;">Piedra Catalizadora</span>
+            <span id="phaseStone" style="font-size: 12px; font-weight: 600; color: #fde68a;">-</span>
           </div>
           <div class="meta-item">
-            <span style="font-size: 9px; text-transform: uppercase; color: var(--text-muted); display: block;">Polaridad</span>
-            <span id="phasePolarity" style="font-size: 11px; font-weight: 600; color: #fef08a;">-</span>
+            <span style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); display: block;">Polaridad</span>
+            <span id="phasePolarity" style="font-size: 12px; font-weight: 600; color: #fef08a;">-</span>
           </div>
           <div class="meta-item">
-            <span style="font-size: 9px; text-transform: uppercase; color: var(--text-muted); display: block;">Virtud Activa</span>
-            <span id="phaseVirtue" style="font-size: 11px; font-weight: 600; color: #fde68a;">-</span>
+            <span style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); display: block;">Virtud Activa</span>
+            <span id="phaseVirtue" style="font-size: 12px; font-weight: 600; color: #fde68a;">-</span>
           </div>
         </div>
 
-        <div class="split-2" style="margin-top: 12px;">
+        <div class="split-2" style="margin-top: 14px;">
           <div>
-            <span style="font-size: 10px; font-weight: 700; color: var(--gold-primary); text-transform: uppercase; display: block; margin-bottom: 2px;">✦ Tarea & Actitud Propicia</span>
-            <p id="todayGuidance" style="font-size: 12px; line-height: 1.4; color: #e2e8f0;">-</p>
+            <span style="font-size: 11px; font-weight: 700; color: var(--gold-primary); text-transform: uppercase; display: block; margin-bottom: 4px;">✦ Tarea & Actitud Propicia</span>
+            <p id="todayGuidance" style="font-size: 13px; line-height: 1.5; color: #e2e8f0;">-</p>
           </div>
-          <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 8px; padding: 10px; display: flex; flex-direction: column; justify-content: center;">
-            <span style="font-size: 9px; font-weight: 700; color: var(--gold-light); text-transform: uppercase; margin-bottom: 2px;">Aforismo Tradicional</span>
-            <blockquote id="todayQuote" style="font-style: italic; font-size: 12px; color: #fef3c7; line-height: 1.3;">"-"</blockquote>
+          <div style="background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 10px; padding: 12px; display: flex; flex-direction: column; justify-content: center;">
+            <span style="font-size: 10px; font-weight: 700; color: var(--gold-light); text-transform: uppercase; margin-bottom: 4px;">Aforismo Tradicional</span>
+            <blockquote id="todayQuote" style="font-style: italic; font-size: 13px; color: #fef3c7; line-height: 1.4;">"-"</blockquote>
           </div>
         </div>
       </section>
 
       <!-- Asesor Inverso de Tareas -->
       <section class="glass-card">
-        <h3 class="font-cinzel" style="font-size: 14px; color: var(--gold-light); margin-bottom: 4px;">
+        <h3 class="font-cinzel" style="font-size: 15px; color: var(--gold-light); margin-bottom: 6px;">
           ¿Qué deseas emprender? (Asesor de Tareas)
         </h3>
-        <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
           Elige qué necesitas realizar y se indicará el día propicio según tu ciclo personal:
         </p>
         <div class="split-2">
@@ -298,77 +277,84 @@
             <option value="5">Recoger frutos, cobrar pagos y gozo artístico</option>
             <option value="6">Descansar, soltar lo caduco y renovar fuerzas</option>
           </select>
-          <div style="background: #0d1222; border: 1px solid #1e293b; border-radius: 8px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center;">
+          <div style="background: #0d1222; border: 1px solid #1e293b; border-radius: 10px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center;">
             <div>
-              <span style="font-size: 9px; text-transform: uppercase; color: var(--text-muted); display: block;">Tu Día Recomendado:</span>
-              <span id="recommendedDayName" class="font-cinzel" style="font-size: 13px; font-weight: 700; color: var(--gold-light);">-</span>
+              <span style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); display: block;">Tu Día Recomendado:</span>
+              <span id="recommendedDayName" class="font-cinzel" style="font-size: 14px; font-weight: 700; color: var(--gold-light);">-</span>
             </div>
-            <span id="recommendedPlanetName" style="font-size: 10px; padding: 3px 6px; border-radius: 999px; background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25);">-</span>
+            <span id="recommendedPlanetName" style="font-size: 11px; padding: 4px 8px; border-radius: 999px; background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25);">-</span>
           </div>
         </div>
       </section>
 
       <!-- Rueda Semanal -->
       <section class="glass-card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <h3 class="font-cinzel" style="font-size: 14px; color: var(--gold-light);">El Septenario Semanal Personal</h3>
-          <span style="font-size: 10px; color: var(--text-muted);">Toca para inspeccionar</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <h3 class="font-cinzel" style="font-size: 15px; color: var(--gold-light);">El Septenario Semanal Personal</h3>
+          <span style="font-size: 11px; color: var(--text-muted);">Toca para inspeccionar</span>
         </div>
         <div class="week-grid" id="weekGrid"></div>
-      </section>
-
-      <!-- Temporizador -->
-      <section class="glass-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-        <div>
-          <h4 class="font-cinzel" style="font-size: 13px; color: #ffffff;">☉ Meditación Solar (7 Minutos)</h4>
-          <p style="font-size: 11px; color: var(--text-muted);">Descansa con ojos cerrados absorbiendo la luz en rostro y brazos.</p>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span id="timerDisplay" style="font-family: monospace; font-size: 20px; font-weight: 700; color: #f59e0b;">07:00</span>
-          <button id="timerBtn" type="button" onclick="toggleTimer()" style="padding: 6px 14px; border-radius: 6px; border: none; background: #f59e0b; color: #000; font-weight: 700; font-size: 11px; cursor: pointer;">
-            Iniciar
-          </button>
-        </div>
       </section>
 
       <!-- Ciclos Anual y Vital -->
       <div class="split-2">
         <section class="glass-card">
-          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 4px; margin-bottom: 6px;">
-            <h4 class="font-cinzel" style="font-size: 13px; color: #ffffff;">☉ Ciclo Anual (52 Días)</h4>
-            <span id="annualPeriodBadge" class="badge" style="font-size: 9px;">-</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 6px; margin-bottom: 8px;">
+            <h4 class="font-cinzel" style="font-size: 14px; color: #ffffff;">☉ Ciclo Anual (52 Días)</h4>
+            <span id="annualPeriodBadge" class="badge" style="font-size: 10px;">-</span>
           </div>
-          <p id="annualPeriodDesc" style="font-size: 11px; color: #cbd5e1; line-height: 1.3;">-</p>
-          <span id="annualDateRange" style="font-size: 10px; color: var(--text-muted); display: block; margin-top: 4px;">-</span>
+          <p id="annualPeriodDesc" style="font-size: 12px; color: #cbd5e1; line-height: 1.4;">-</p>
+          <span id="annualDateRange" style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 6px;">-</span>
         </section>
 
         <section class="glass-card">
-          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 4px; margin-bottom: 6px;">
-            <h4 class="font-cinzel" style="font-size: 13px; color: #ffffff;">☿ Septenario Vital (7 Años)</h4>
-            <span id="lifePeriodBadge" class="badge" style="font-size: 9px;">-</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 6px; margin-bottom: 8px;">
+            <h4 class="font-cinzel" style="font-size: 14px; color: #ffffff;">☿ Septenario Vital (7 Años)</h4>
+            <span id="lifePeriodBadge" class="badge" style="font-size: 10px;">-</span>
           </div>
-          <p id="lifePeriodDesc" style="font-size: 11px; color: #cbd5e1; line-height: 1.3;">-</p>
-          <span id="lifeAgeRange" style="font-size: 10px; color: var(--text-muted); display: block; margin-top: 4px;">-</span>
+          <p id="lifePeriodDesc" style="font-size: 12px; color: #cbd5e1; line-height: 1.4;">-</p>
+          <span id="lifeAgeRange" style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 6px;">-</span>
         </section>
       </div>
+
+      <!-- Temporizador con Música Ambiental Integrada (Al final de todo) -->
+      <section class="glass-card" style="display: flex; flex-direction: column; gap: 12px; border-color: rgba(245, 158, 11, 0.4);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h4 class="font-cinzel" style="font-size: 15px; color: #fef08a;">☉ Meditación Solar & Sintonización (7 Minutos)</h4>
+            <p style="font-size: 12px; color: var(--text-muted);">Música suave de fondo integrada para guiar tu sintonización interior.</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span id="timerDisplay" style="font-family: monospace; font-size: 24px; font-weight: 700; color: #f59e0b;">07:00</span>
+            <button id="timerBtn" type="button" class="btn-action" style="padding: 10px 18px; width: auto; font-size: 12px;">
+              Iniciar Meditación
+            </button>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-muted); background: #0d1222; padding: 8px 12px; border-radius: 8px;">
+          <span>♫ Estado del Audio:</span>
+          <span id="soundStatus" style="color: #34d399; font-weight: 600;">Silenciado (Pulsa Iniciar)</span>
+        </div>
+      </section>
 
     </div>
   </main>
 
   <script>
     var SVG_ICONS = {
-      sol: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41m14.14-14.14l-1.41 1.41"/></svg>',
-      luna: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>',
-      marte: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="14" r="5"/><path d="M19 5l-5.4 5.4M14 5h5v5"/></svg>',
-      mercurio: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 16v6m-3-3h6M8 5a4 4 0 008 0"/></svg>',
-      jupiter: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 6v6a3 3 0 003 3h7M14 8v12"/></svg>',
-      venus: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="5"/><path d="M12 14v7m-3-4h6"/></svg>',
-      saturno: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 5h5v9a3 3 0 003 3h3M4 10h8"/></svg>'
+      sol: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41m14.14-14.14l-1.41 1.41"/></svg>',
+      luna: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>',
+      marte: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="14" r="5"/><path d="M19 5l-5.4 5.4M14 5h5v5"/></svg>',
+      mercurio: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 16v6m-3-3h6M8 5a4 4 0 008 0"/></svg>',
+      jupiter: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 6v6a3 3 0 003 3h7M14 8v12"/></svg>',
+      venus: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="5"/><path d="M12 14v7m-3-4h6"/></svg>',
+      saturno: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="5" r="5" stroke="none"/><path d="M6 5h5v9a3 3 0 003 3h3M4 10h8"/></svg>'
     };
 
     var WEEK_PHASES = [
       {
         name: "Día Solar (Tu Domingo)",
+        keyword: "Introspección",
         planet: "Sol",
         iconKey: 'sol',
         metal: "Oro (Fuerza Espiritual)",
@@ -381,6 +367,7 @@
       },
       {
         name: "Día Lunar (Tu Lunes)",
+        keyword: "Planificación",
         planet: "Luna",
         iconKey: 'luna',
         metal: "Plata (Mente Subconsciente)",
@@ -393,6 +380,7 @@
       },
       {
         name: "Día Marcial (Tu Martes)",
+        keyword: "Comunicación",
         planet: "Marte",
         iconKey: 'marte',
         metal: "Hierro (Voluntad y Energía)",
@@ -405,6 +393,7 @@
       },
       {
         name: "Día Mercurial (Tu Miércoles)",
+        keyword: "Acción Física",
         planet: "Mercurio",
         iconKey: 'mercurio',
         metal: "Mercurio / Azogue (Fluidez Vital)",
@@ -417,6 +406,7 @@
       },
       {
         name: "Día Jupiteriano (Tu Jueves)",
+        keyword: "Equilibrio",
         planet: "Júpiter",
         iconKey: 'jupiter',
         metal: "Estaño (Equilibrio y Dominio)",
@@ -429,6 +419,7 @@
       },
       {
         name: "Día Venusino (Tu Viernes)",
+        keyword: "Cosecha",
         planet: "Venus",
         iconKey: 'venus',
         metal: "Cobre (Armonía y Confraternidad)",
@@ -441,6 +432,7 @@
       },
       {
         name: "Día Saturnino (Tu Sábado)",
+        keyword: "Descanso",
         planet: "Saturno",
         iconKey: 'saturno',
         metal: "Plomo (Transmutación y Límite)",
@@ -454,6 +446,7 @@
     ];
 
     var DAYS_NAMES = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+    var MONTHS_NAMES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
     var ANNUAL_PERIODS = [
       { name: "1º Periodo (Días 1 a 52)", desc: "Acopio de vitalidad, meditación y relaciones públicas. Evitar desgastes innecesarios." },
@@ -479,11 +472,61 @@
       { range: "70+ años", desc: "Desprendimiento gradual y sintonización plena con la Unidad." }
     ];
 
+    function construirSelectores() {
+      function rellenarSelect(idSelect, tipo, defVal) {
+        var el = document.getElementById(idSelect);
+        if (!el) return;
+        el.innerHTML = '';
+        
+        if (tipo === 'day') {
+          for (var i = 1; i <= 31; i++) {
+            var opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = i;
+            if (i === defVal) opt.selected = true;
+            el.appendChild(opt);
+          }
+        } else if (tipo === 'month') {
+          for (var m = 0; m < 12; m++) {
+            var optM = document.createElement('option');
+            optM.value = m;
+            optM.textContent = MONTHS_NAMES[m];
+            if (m === defVal) optM.selected = true;
+            el.appendChild(optM);
+          }
+        } else if (tipo === 'yearBirth') {
+          for (var y = 2026; y >= 1926; y--) {
+            var optY = document.createElement('option');
+            optY.value = y;
+            optY.textContent = y;
+            if (y === defVal) optY.selected = true;
+            el.appendChild(optY);
+          }
+        } else if (tipo === 'yearTarget') {
+          for (var yt = 2028; yt >= 2024; yt--) {
+            var optYT = document.createElement('option');
+            optYT.value = yt;
+            optYT.textContent = yt;
+            if (yt === defVal) optYT.selected = true;
+            el.appendChild(optYT);
+          }
+        }
+      }
+
+      rellenarSelect('birthDay', 'day', 1);
+      rellenarSelect('birthMonth', 'month', 0);
+      rellenarSelect('birthYear', 'yearBirth', 1990);
+
+      var hoy = new Date();
+      rellenarSelect('targetDay', 'day', hoy.getDate());
+      rellenarSelect('targetMonth', 'month', hoy.getMonth());
+      rellenarSelect('targetYear', 'yearTarget', hoy.getFullYear());
+    }
+
     function leerFecha(prefix) {
       var d = parseInt(document.getElementById(prefix + 'Day').value, 10);
       var m = parseInt(document.getElementById(prefix + 'Month').value, 10);
       var y = parseInt(document.getElementById(prefix + 'Year').value, 10);
-      // Usar UTC en Safari para evitar Invalid Date por diferencias horarias locales
       return new Date(Date.UTC(y, m, d));
     }
 
@@ -553,10 +596,13 @@
                 '<span>' + DAYS_NAMES[civilDayIndex] + '</span>' +
                 '<span style="color: #f59e0b;">' + phase.planet + '</span>' +
               '</div>' +
-              '<div style="margin: 4px 0; color: #f59e0b;">' + SVG_ICONS[phase.iconKey] + '</div>' +
-              '<h5 class="font-cinzel" style="font-size: 11px; font-weight: 700; color: #f1f5f9; line-height: 1.2;">' + phase.name + '</h5>' +
+              '<div style="margin: 2px 0; color: #f59e0b;">' + SVG_ICONS[phase.iconKey] + '</div>' +
+              '<h5 class="font-cinzel" style="font-size: 11px; font-weight: 700; color: #f1f5f9; line-height: 1.1;">' + phase.name + '</h5>' +
             '</div>' +
-            '<div style="margin-top: 6px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 10px; color: #fef08a;">' +
+            '<div style="margin-top: 4px;">' +
+              '<span style="display:inline-block; font-size:9px; font-weight:700; background:rgba(245,158,11,0.15); color:#f59e0b; padding:2px 6px; border-radius:6px; border:1px solid rgba(245,158,11,0.3);">' + phase.keyword + '</span>' +
+            '</div>' +
+            '<div style="margin-top: 4px; padding-top: 2px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 9px; color: #fef08a;">' +
               (isCurrentSelected ? '• Seleccionado •' : ('Fase ' + (idx + 1))) +
             '</div>';
 
@@ -620,26 +666,104 @@
         window.scrollTo({ top: topPos, behavior: 'smooth' });
       }
     }
-    btnCalc.onclick = dispararCalculo;
-    btnCalc.ontouchend = dispararCalculo;
+    if (btnCalc) {
+      btnCalc.onclick = dispararCalculo;
+      btnCalc.ontouchend = dispararCalculo;
+    }
 
+    // --- SINTETIZADOR DE MÚSICA AMBIENTAL DE FONDO INTEGRADO (Web Audio API Directo) ---
+    var audioCtx = null;
+    var ambientInterval = null;
     var timerInterval = null;
     var secondsLeft = 7 * 60;
+    var isPlaying = false;
+
+    // Notas de un acorde relajante continuo (Frecuencias de meditación armónica tipo cuenco)
+    var acordesFrecuencias = [136.1, 204.15, 272.2]; 
+
+    function tocarAcordeSuave() {
+      if (!audioCtx || audioCtx.state !== 'running') return;
+      try {
+        acordesFrecuencias.forEach(function(freq, index) {
+          var osc = audioCtx.createOscillator();
+          var gain = audioCtx.createGain();
+
+          osc.type = index === 0 ? 'sine' : 'triangle';
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+          // Volumen muy tenue tipo colchón ambiental
+          gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+          gain.gain.linearRampToValueAtTime(0.018, audioCtx.currentTime + 3);
+          gain.gain.linearRampToValueAtTime(0.0001, audioCtx.currentTime + 7.5);
+
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          osc.start();
+          osc.stop(audioCtx.currentTime + 8);
+        });
+      } catch (e) {}
+    }
+
+    function iniciarMusicaAmbiental() {
+      try {
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtx) {
+          audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        tocarAcordeSuave();
+        if (ambientInterval) clearInterval(ambientInterval);
+        ambientInterval = setInterval(tocarAcordeSuave, 7000); // Repetir ciclo de acorde armónico cada 7 segundos
+        isPlaying = true;
+      } catch (e) {
+        console.log("Error de audio:", e);
+      }
+    }
+
+    function detenerMusicaAmbiental() {
+      if (ambientInterval) {
+        clearInterval(ambientInterval);
+        ambientInterval = null;
+      }
+      if (audioCtx) {
+        try {
+          audioCtx.close();
+        } catch(e) {}
+        audioCtx = null;
+      }
+      isPlaying = false;
+    }
 
     function toggleTimer() {
       var btn = document.getElementById('timerBtn');
       var disp = document.getElementById('timerDisplay');
+      var soundStatus = document.getElementById('soundStatus');
+
       if (timerInterval) {
+        // Pausar
         clearInterval(timerInterval);
         timerInterval = null;
-        btn.textContent = 'Reanudar';
+        btn.textContent = 'Iniciar Meditación';
+        detenerMusicaAmbiental();
+        soundStatus.textContent = 'Silenciado (Pausado)';
+        soundStatus.style.color = '#fbbf24';
       } else {
+        // Iniciar
         btn.textContent = 'Pausar';
+        iniciarMusicaAmbiental();
+        soundStatus.textContent = 'Música Ambiental Suave Activa';
+        soundStatus.style.color = '#34d399';
+
         timerInterval = setInterval(function() {
           if (secondsLeft <= 0) {
             clearInterval(timerInterval);
             timerInterval = null;
-            btn.textContent = 'Completado';
+            btn.textContent = 'Iniciar Meditación';
+            detenerMusicaAmbiental();
+            soundStatus.textContent = 'Completado';
             alert("Periodo de 7 minutos concluido. Que la Paz Profunda more en tu templo.");
             return;
           }
@@ -651,15 +775,8 @@
       }
     }
 
-    (function init() {
-      var hoy = new Date();
-      var tDay = document.getElementById('targetDay');
-      var tMonth = document.getElementById('targetMonth');
-      var tYear = document.getElementById('targetYear');
-
-      if (tDay) tDay.value = hoy.getDate();
-      if (tMonth) tMonth.value = hoy.getMonth();
-      if (tYear) tYear.value = hoy.getFullYear();
+    document.addEventListener("DOMContentLoaded", function() {
+      construirSelectores();
 
       try {
         var g = localStorage.getItem('user_saved_birth');
@@ -672,7 +789,17 @@
       } catch (e) {}
 
       ejecutarAutoCalculo();
-    })();
+
+      var timerBtn = document.getElementById('timerBtn');
+      if (timerBtn) {
+        var triggerTimer = function(e) {
+          e.preventDefault();
+          toggleTimer();
+        };
+        timerBtn.addEventListener('click', triggerTimer);
+        timerBtn.addEventListener('touchend', triggerTimer);
+      }
+    });
   </script>
 </body>
 </html>
